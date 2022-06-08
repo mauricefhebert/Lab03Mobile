@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lab03Mobile.Views.CarListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <CollectionView
+        x:Name="carCollectionView"
+        Margin="10"
+        SelectionMode="Single">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <!--  Frame of each car  -->
+                <Frame
+                    Margin="5"
+                    Padding="5"
+                    BorderColor="LightGray"
+                    CornerRadius="5"
+                    HasShadow="True"
+                    HorizontalOptions="FillAndExpand">
+                    <!--  Inner content of frame  -->
+                    <StackLayout Margin="10">
+                        <Frame BorderColor="Transparent" HeightRequest="200">
+                            <Image Aspect="AspectFill" Source="{Binding UrlImage}" />
+                        </Frame>
+                        <!--  Text  -->
+                        <StackLayout>
+                            <Label
+                                FontSize="24"
+                                Text="{Binding Modele}"
+                                TextColor="#000" />
+                            <Label
+                                FontSize="16"
+                                Text="{Binding Disponible}"
+                                TextColor="#333">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Disponible}"
+                                        TargetType="Label"
+                                        Value="true">
+                                        <Setter Property="Text" Value="Disponible" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding Disponible}"
+                                        TargetType="Label"
+                                        Value="false">
+                                        <Setter Property="Text" Value="Non Disponible" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </StackLayout>
+                        <!--  Button  -->
+                        <StackLayout Orientation="Horizontal">
+                            <Button
+                                BackgroundColor="LightGray"
+                                Clicked="Btn_Details_Clicked"
+                                Text="Details" />
+                            <Button
+                                BackgroundColor="LightGreen"
+                                Clicked="Btn_Louee_Clicked"
+                                Text="Louée" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

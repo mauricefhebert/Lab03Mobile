@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lab03Mobile.Views.InvoicePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <StackLayout>
+        <CollectionView
+            x:Name="rentedCarCollectionView"
+            Margin="10"
+            SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!--  Frame of each car  -->
+                    <Frame
+                        Margin="5"
+                        Padding="5"
+                        BorderColor="LightGray"
+                        CornerRadius="5"
+                        HasShadow="True"
+                        HorizontalOptions="FillAndExpand">
+                        <!--  Inner content of frame  -->
+                        <StackLayout Margin="10">
+                            <Frame BorderColor="Transparent" HeightRequest="200">
+                                <Image Aspect="AspectFill" Source="{Binding UrlImage}" />
+                            </Frame>
+                            <!--  Text  -->
+                            <StackLayout>
+                                <Label
+                                    FontSize="32"
+                                    Text="{Binding Modele}"
+                                    TextColor="#000" />
+                                <Label
+                                    FontSize="20"
+                                    Text="{Binding Categorie, StringFormat='Catégorie: {0}'}"
+                                    TextColor="#333" />
+                                <Label
+                                    FontSize="20"
+                                    Text="{Binding Kilometrage, StringFormat='Kilometrage: {0}'}"
+                                    TextColor="#333" />
+                                <Label
+                                    FontSize="20"
+                                    Text="{Binding PrixJours, StringFormat='Prix: {0:C}/Jour'}"
+                                    TextColor="#333" />
+                            </StackLayout>
+                            <!--  Button  -->
+                            <Button
+                                Margin="0,10,0,0"
+                                BackgroundColor="LightGreen"
+                                Clicked="Btn_Return_Car_Clicked"
+                                Text="Retournée le vehicule" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--  Affichage du total de la facture  -->
+        <Frame BorderColor="Black" CornerRadius="0">
+            <StackLayout Margin="10">
+                <Label
+                    x:Name="invoiceAmount"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Amount, StringFormat='Montant Total: {0:C}'}"
+                    TextColor="#000" />
+                <Button Clicked="Btn_Paye_Invoice_Clicked" Text="Payé ma facture" />
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

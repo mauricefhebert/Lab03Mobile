@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lab03Mobile.Views.CarDetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10" Padding="0,30,0,0">
+                <Frame BorderColor="Transparent" HeightRequest="200">
+                    <Image Aspect="AspectFill" Source="{Binding UrlImage}" />
+                </Frame>
+                <StackLayout Margin="10">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="32"
+                        Text="{Binding Modele}"
+                        TextColor="#000" />
+                    <Label
+                        FontSize="20"
+                        Text="{Binding Description}"
+                        TextColor="#333" />
+                    <Label
+                        Padding="0,20,0,10"
+                        FontSize="28"
+                        Text="Specification"
+                        TextColor="#000" />
+                    <Label
+                        FontSize="20"
+                        Text="{Binding Categorie, StringFormat='Catégorie: {0}'}"
+                        TextColor="#333" />
+                    <Label
+                        FontSize="20"
+                        Text="{Binding Kilometrage, StringFormat='Kilometrage: {0}'}"
+                        TextColor="#333" />
+                    <Label
+                        FontSize="20"
+                        Text="{Binding PrixJours, StringFormat='Prix: {0:C}/Jour'}"
+                        TextColor="#333" />
+                    <Label
+                        FontSize="20"
+                        Text="{Binding Disponible, StringFormat='Disponibilité: {0}'}"
+                        TextColor="#333">
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding Disponible}"
+                                TargetType="Label"
+                                Value="false">
+                                <Setter Property="Text" Value="Non Disponible" />
+                            </DataTrigger>
+                            <DataTrigger
+                                Binding="{Binding Disponible}"
+                                TargetType="Label"
+                                Value="true">
+                                <Setter Property="Text" Value="Disponible" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

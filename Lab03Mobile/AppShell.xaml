@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="Lab03Mobile.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Lab03Mobile.Views">
+
+    <FlyoutItem Title="Voitrue" Icon="car.png">
+        <ShellContent ContentTemplate="{DataTemplate views:CarListPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Facturation" Icon="bill.png">
+        <ShellContent ContentTemplate="{DataTemplate views:InvoicePage}" />
+    </FlyoutItem>
+
+</Shell>
