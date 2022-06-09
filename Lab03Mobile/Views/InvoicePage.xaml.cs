@@ -32,7 +32,7 @@ namespace Lab03Mobile.Views
             this.rentedCarCollectionView.ItemsSource = this.Cars;
 
             this.Invoices = CarDbContext.invoice;
-            this.invoiceAmount.Text = Invoices.Amount.ToString();
+            this.invoiceAmount.Text = $"Montant de la facture ${this.Invoices.Amount}";
         }
 
         private void Btn_Return_Car_Clicked(object sender, EventArgs e)
@@ -44,7 +44,8 @@ namespace Lab03Mobile.Views
             {
                 DisplayAlert("Confirmation", $"Vous avez retourn le vehicule suivant: {car.Modele}", "Ok");
                 car.Disponible = true;
-                this.Invoices.Amount -= car.PrixJours;
+                if(Invoices.Amount > 0)
+                    this.Invoices.Amount -= car.PrixJours;
             }
         }
 

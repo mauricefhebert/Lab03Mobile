@@ -18,14 +18,13 @@ namespace Lab03Mobile.Views
         {
             InitializeComponent();
             Invoices = invoice;
-            this.BindingContext = Invoices;
+            this.BindingContext = this;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            string amount = $"Montant de la facture ${this.Invoices.Amount}";
-            this.invoiceAmountEntry.Text = amount;
+            this.invoiceAmountEntry.Text = Invoices.Amount.ToString();
         }
 
         private void Btn_Confirm_Payement_Clicked(object sender, EventArgs e)
