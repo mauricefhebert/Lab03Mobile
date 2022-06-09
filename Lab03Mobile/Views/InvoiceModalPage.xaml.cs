@@ -24,7 +24,8 @@ namespace Lab03Mobile.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            this.invoiceAmountEntry.Text = Invoices.Amount.ToString();
+            string amount = $"Montant de la facture ${this.Invoices.Amount}";
+            this.invoiceAmountEntry.Text = amount;
         }
 
         private void Btn_Confirm_Payement_Clicked(object sender, EventArgs e)

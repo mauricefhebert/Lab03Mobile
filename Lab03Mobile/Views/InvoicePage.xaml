@@ -63,8 +63,8 @@
                     x:Name="invoiceAmount"
                     FontSize="Large"
                     HorizontalTextAlignment="Center"
-                    Text="{Binding Amount, StringFormat='Montant Total: {0:C}'}"
                     TextColor="#000" />
+
                 <Button Clicked="Btn_Paye_Invoice_Clicked" Text="Payé ma facture" />
             </StackLayout>
         </Frame>

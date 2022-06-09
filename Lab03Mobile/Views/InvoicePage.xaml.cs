@@ -17,7 +17,7 @@ namespace Lab03Mobile.Views
     {
         public ObservableCollection<Car> Cars { get; set; }
         public Invoice Invoices { get; set; }
-        public double Amount { get; set; }
+
         public InvoicePage()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace Lab03Mobile.Views
             this.rentedCarCollectionView.ItemsSource = this.Cars;
 
             this.Invoices = CarDbContext.invoice;
-            this.Amount = Invoices.Amount;
+            this.invoiceAmount.Text = Invoices.Amount.ToString();
         }
 
         private void Btn_Return_Car_Clicked(object sender, EventArgs e)
